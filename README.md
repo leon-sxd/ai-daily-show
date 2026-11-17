@@ -11,7 +11,7 @@
 - 渲染走 HyperFrames CLI：`npx --yes hyperframes@0.9.52`
 - 动画库 GSAP 3.14.2 经固定版本 CDN 引入，仓库不打包压缩产物
 
-## 快速开始
+## 快速开始（手动 CLI）
 
 ```bash
 # 1. 复制对应比例模板到工作目录
@@ -27,7 +27,7 @@ npx --yes hyperframes@0.9.52 preview
 # 4. 渲染静音源（横版）
 npx --yes hyperframes@0.9.52 render --resolution landscape -o renders/final.silent.mp4
 
-# 5. 合入自备 BGM（二选一，参数口径一致）
+# 5. 合入自备 BGM（二选一；脚本在仓库根目录 tools/ 下，可从仓库根目录调用，或随模板复制 tools/）
 #    Windows PowerShell：
 pwsh tools/mux-bgm.ps1 -ProjectDir . -InputMp4 renders/final.silent.mp4 -OutputMp4 renders/final.mp4
 #    跨平台 Node（Windows / macOS / Linux）：
@@ -36,14 +36,24 @@ node tools/mux-bgm.js --project-dir . --input renders/final.silent.mp4 --output 
 
 竖版把模板换成 `templates/portrait`，渲染加 `--resolution portrait`。
 
+## 作为 Agent 技能使用
+
+仓库根目录的 `SKILL.md` 是一份 runtime 无关的 Agent 指令清单；支持技能目录的 Agent 可把本仓库克隆或下载到技能工作区，读取 `SKILL.md` 后按其中流程执行。之后可用类似指令触发：
+
+- 「用 ai-daily-show 生成今天的 AI 日报」
+- 「按 ai-daily-show 模板做本周 AI 周报，横版 + 竖版」
+
+注意：GitHub 仓库不会被自动注册为技能；首次使用仍需先把仓库放到 Agent 的技能目录，或让 Agent 拉取仓库后阅读 `SKILL.md`。该流程不依赖任何旧版专用技能运行时。
+
 ## 目录结构
 
 ```
 ai-daily-show/
+├── SKILL.md              # Agent 指令清单（runtime 无关，供支持技能目录的 Agent 读取）
 ├── templates/
 │   ├── landscape/        # 横版 16:9 模板（index.html + compositions/）
 │   ├── portrait/         # 竖版 9:16 模板（index.html + compositions/）
-│   └── covers/           # 4:3 / 3:4 封面占位版式（SVG）
+│   └── covers/          # 4:3 / 3:4 封面占位版式（SVG）
 ├── tools/
 │   ├── mux-bgm.ps1       # 静音成片 + 自备 BGM 合轨（Windows PowerShell）
 │   └── mux-bgm.js        # 同一套口径的跨平台 Node 版合轨脚本
@@ -52,7 +62,8 @@ ai-daily-show/
 │   ├── contract.md       # HyperFrames 组合契约（时间线、媒体、确定性规则）
 │   ├── layout-landscape.md
 │   ├── layout-portrait.md
-│   └── cover-spec.md     # 封面槽位、正圆约束、安全避让区
+│   ├── cover-spec.md     # 封面槽位、正圆约束、安全避让区
+│   └── smoke-test.md     # 干净目录 lint + 完整渲染冒烟流程
 ├── examples/             # 一套可渲染的脱敏示例分镜
 └── assets/               # 私有素材自备说明（不放真实成品）
 ```
@@ -83,4 +94,5 @@ ai-daily-show/
 - [x] 仓库 LICENSE：MIT
 - [x] 脱敏示例分镜（`templates/` 双版本即脱敏样例，说明见 `examples/README.md`）
 - [x] 全新克隆目录 lint 冒烟（横/竖均 0 errors / 0 warnings）
-- [ ] 全新克隆目录完整 90s 渲染冒烟（需本机 FFmpeg，待在干净环境复验）
+- [x] 干净目录渲染冒烟流程文档（`docs/smoke-test.md`）
+- [ ] 全新克隆目录完整 90s 实跑渲染复验（需本机 FFmpeg）
