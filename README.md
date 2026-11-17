@@ -27,8 +27,11 @@ npx --yes hyperframes@0.9.52 preview
 # 4. 渲染静音源（横版）
 npx --yes hyperframes@0.9.52 render --resolution landscape -o renders/final.silent.mp4
 
-# 5. 合入自备 BGM（参数见 tools/mux-bgm.ps1）
+# 5. 合入自备 BGM（二选一，参数口径一致）
+#    Windows PowerShell：
 pwsh tools/mux-bgm.ps1 -ProjectDir . -InputMp4 renders/final.silent.mp4 -OutputMp4 renders/final.mp4
+#    跨平台 Node（Windows / macOS / Linux）：
+node tools/mux-bgm.js --project-dir . --input renders/final.silent.mp4 --output renders/final.mp4
 ```
 
 竖版把模板换成 `templates/portrait`，渲染加 `--resolution portrait`。
@@ -42,7 +45,8 @@ ai-daily-show/
 │   ├── portrait/         # 竖版 9:16 模板（index.html + compositions/）
 │   └── covers/           # 4:3 / 3:4 封面占位版式（SVG）
 ├── tools/
-│   └── mux-bgm.ps1       # 静音成片 + 自备 BGM 合轨（Windows PowerShell）
+│   ├── mux-bgm.ps1       # 静音成片 + 自备 BGM 合轨（Windows PowerShell）
+│   └── mux-bgm.js        # 同一套口径的跨平台 Node 版合轨脚本
 ├── docs/
 │   ├── workflow.md       # 选题 → 文案 → 工程 → lint → render → 合轨 → 归档 → 人工发布
 │   ├── contract.md       # HyperFrames 组合契约（时间线、媒体、确定性规则）
@@ -74,8 +78,9 @@ ai-daily-show/
 
 ## 路线图
 
-- [ ] 合轨脚本跨平台版本（bash / Node 调 ffmpeg）
+- [x] 合轨脚本跨平台版本（Node 调 ffmpeg，见 `tools/mux-bgm.js`）
 - [ ] 旁白 TTS 接入（当前模板 voice 音频标签保持注释）
 - [x] 仓库 LICENSE：MIT
-- [ ] 脱敏示例分镜 `examples/`
-- [ ] 全新克隆环境 lint + 冒烟渲染验收
+- [x] 脱敏示例分镜（`templates/` 双版本即脱敏样例，说明见 `examples/README.md`）
+- [x] 全新克隆目录 lint 冒烟（横/竖均 0 errors / 0 warnings）
+- [ ] 全新克隆目录完整 90s 渲染冒烟（需本机 FFmpeg，待在干净环境复验）
