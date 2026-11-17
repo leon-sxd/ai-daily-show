@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #13161b;
+          color: #f2f4f7;
+          font-family: system-ui, sans-serif;
+        }
+        .kicker {
+          position: absolute;
+          left: 96px;
+          top: 270px;
+          font-size: 26px;
+          letter-spacing: 6px;
+          color: #e0a45c;
+          font-weight: 600;
+        }
+        .lines {
+          position: absolute;
+          left: 96px;
+          top: 350px;
+          width: 844px;
+        }
+        .line {
+          font-size: 54px;
+          line-height: 1.4;
+          font-weight: 800;
+          letter-spacing: 1px;
+        }
+        .line-amber { color: #e0a45c; }
+        .stage {
+          position: absolute;
+          left: 96px;
+          top: 780px;
+          width: 844px;
+          height: 560px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        svg { overflow: visible; }
+        .ring { fill: none; stroke: rgba(224, 164, 92, 0.3); stroke-width: 2; }
+        .core { fill: #e0a45c; }
+        .tagline {
+          position: absolute;
+          left: 96px;
+          bottom: 500px;
+          font-size: 28px;
+          letter-spacing: 1px;
+          color: #c2cad4;
+        }
+      </style>
+
+      <div id="root" data-composition-id="s10" data-width="1080" data-height="1920">
+        <div class="kicker" id="s10-kicker">今日观察</div>
+
+        <div class="lines">
+          <div class="line" id="s10-l1">今天的热点背后</div>
+          <div class="line line-amber" id="s10-l2">是同一件事</div>
+          <div class="line" id="s10-l3">从演示能力，走向解决问题</div>
+        </div>
+
+        <div class="stage" id="s10-stage">
+          <svg width="460" height="460" viewBox="0 0 460 460">
+            <circle class="ring" id="s10-r1" cx="230" cy="230" r="80" />
+            <circle class="ring" id="s10-r2" cx="230" cy="230" r="140" />
+            <circle class="ring" id="s10-r3" cx="230" cy="230" r="200" />
+            <circle class="core" id="s10-core" cx="230" cy="230" r="40" />
+          </svg>
+        </div>
+
+        <div class="tagline" id="s10-tag">关注我，每天 90 秒，看懂 AI 新动向</div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s10-kicker", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0.25);
+          tl.fromTo("#s10-l1", { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0.55);
+          tl.fromTo("#s10-l2", { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0.9);
+          tl.fromTo("#s10-l3", { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 1.25);
+          tl.fromTo("#s10-core", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.6)" }, 1.5);
+          tl.fromTo(["#s10-r1", "#s10-r2", "#s10-r3"], { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.7, ease: "power2.out", stagger: 0.15 }, 1.65);
+          tl.fromTo("#s10-tag", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.5);
+          tl.to("#s10-r3", { rotate: 30, duration: 3.0, ease: "sine.inOut" }, 2.4);
+          window.__timelines["s10"] = tl;
+          tl.seek(0);
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>AI 日报模板 · 今日观察（9:16 竖版）</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #13161b;
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #13161b;
+      }
+      #root [data-composition-src] {
+        position: absolute;
+        inset: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-width="1080"
+      data-height="1920"
+      data-fps="30"
+      data-duration="90"
+    >
+      <!-- 镜1 开场钩子 0-8 -->
+      <div
+        id="s1"
+        data-composition-id="s1"
+        data-composition-src="compositions/scene-01.html"
+        data-start="0"
+        data-duration="8"
+        data-track-index="0"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- 镜2 要点 01 8-17 -->
+      <div
+        id="s2"
+        data-composition-id="s2"
+        data-composition-src="compositions/scene-02.html"
+        data-start="8"
+        data-duration="9"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- 镜3 要点 02 17-26 -->
+      <div
+        id="s3"
+        data-composition-id="s3"
+        data-composition-src="compositions/scene-03.html"
+        data-start="17"
+        data-duration="9"
+        data-track-index="2"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- 镜4 要点 03 26-35 -->
+      <div
+        id="s4"
+        data-composition-id="s4"
+        data-composition-src="compositions/scene-04.html"
+        data-start="26"
+        data-duration="9"
+        data-track-index="3"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- 镜5 要点 04 35-44 -->
+      <div
+        id="s5"
+        data-composition-id="s5"
+        data-composition-src="compositions/scene-05.html"
+        data-start="35"
+        data-duration="9"
+        data-track-index="4"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- 镜6 要点 05 44-53 -->
+      <div
+        id="s6"
+        data-composition-id="s6"
+        data-composition-src="compositions/scene-06.html"
+        data-start="44"
+        data-duration="9"
+        data-track-index="5"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- 镜7 行业联名呼吁审慎推进 53-62 -->
+      <div
+        id="s7"
+        data-composition-id="s7"
+        data-composition-src="compositions/scene-07.html"
+        data-start="53"
+        data-duration="9"
+        data-track-index="6"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- 镜8 概念拆解 AI 智能体 62-72 -->
+      <div
+        id="s8"
+        data-composition-id="s8"
+        data-composition-src="compositions/scene-08.html"
+        data-start="62"
+        data-duration="10"
+        data-track-index="7"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- 镜9 今日三条主线 72-81 -->
+      <div
+        id="s9"
+        data-composition-id="s9"
+        data-composition-src="compositions/scene-09.html"
+        data-start="72"
+        data-duration="9"
+        data-track-index="8"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- 镜10 结尾金句 81-90 -->
+      <div
+        id="s10"
+        data-composition-id="s10"
+        data-composition-src="compositions/scene-10.html"
+        data-start="81"
+        data-duration="9"
+        data-track-index="9"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- 自备素材：将自有纯音乐放到 assets/bgm.wav（44.1kHz 立体声，时长 ≥ 成片长度）后取消 bgm 行注释；旁白 TTS 接入后再取消 voice 行注释。
+      <audio id="voice" src="assets/voiceover.wav" data-start="0" data-duration="90" data-volume="1" data-track-index="10"></audio>
+      <audio id="bgm" src="assets/bgm.wav" data-start="0" data-duration="90" data-volume="1" data-track-index="11"></audio>
+      -->
+    </div>
+    <script>
+      // 宿主时间线：各子组合由框架独立驱动
+      const mainTl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = mainTl;
+      mainTl.seek(0);
+    </script>
+  </body>
+</html>

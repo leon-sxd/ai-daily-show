@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #13161b;
+          color: #f2f4f7;
+          font-family: system-ui, sans-serif;
+        }
+        .kicker {
+          position: absolute;
+          left: 96px;
+          top: 270px;
+          font-size: 26px;
+          letter-spacing: 6px;
+          color: #e0a45c;
+          font-weight: 600;
+        }
+        .text {
+          position: absolute;
+          left: 96px;
+          top: 350px;
+          width: 844px;
+        }
+        h1 {
+          font-size: 62px;
+          line-height: 1.22;
+          font-weight: 800;
+          letter-spacing: 1px;
+        }
+        .lead {
+          margin-top: 28px;
+          font-size: 30px;
+          line-height: 1.55;
+          color: #c2cad4;
+        }
+        .rule {
+          width: 76px;
+          height: 4px;
+          border-radius: 2px;
+          background: #e0a45c;
+          margin-top: 28px;
+        }
+        .stage {
+          position: absolute;
+          left: 96px;
+          top: 780px;
+          width: 844px;
+          height: 560px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        svg { overflow: visible; }
+        .box { fill: #14171c; stroke: rgba(242, 244, 247, 0.18); stroke-width: 1.5; rx: 12; }
+        .box-hot { fill: #14171c; stroke: #e0a45c; stroke-width: 2; rx: 12; }
+        .box-title { fill: #f2f4f7; font-size: 26px; font-weight: 700; text-anchor: middle; font-family: system-ui, sans-serif; }
+        .box-sub { fill: #c2cad4; font-size: 20px; text-anchor: middle; font-family: system-ui, sans-serif; }
+        .arrow { stroke: #e0a45c; stroke-width: 2.5; fill: none; }
+        .tagline {
+          position: absolute;
+          left: 96px;
+          bottom: 500px;
+          font-size: 28px;
+          letter-spacing: 1px;
+          color: #c2cad4;
+        }
+      </style>
+
+      <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+        <div class="kicker" id="s3-kicker">热点 02 · 基座大模型</div>
+
+        <div class="text">
+          <h1 id="s3-title">示例基座模型上线</h1>
+          <p class="lead" id="s3-lead">示例能力与成本说明，正式出片时替换为当期核实口径</p>
+          <div class="rule" id="s3-rule"></div>
+        </div>
+
+        <div class="stage" id="s3-stage">
+          <svg width="860" height="480" viewBox="0 0 880 520">
+            <rect class="box" id="s3-a1" x="60" y="110" width="260" height="120" rx="12" />
+            <text class="box-title" x="190" y="162">智能体</text>
+            <text class="box-sub" x="190" y="196">长周期任务</text>
+
+            <rect class="box-hot" id="s3-b1" x="560" y="110" width="260" height="120" rx="12" />
+            <text class="box-title" x="690" y="162">编程能力</text>
+            <text class="box-sub" x="690" y="196">工具调用</text>
+
+            <line class="arrow" id="s3-ar1" x1="320" y1="170" x2="548" y2="170" />
+            <polygon id="s3-p1" points="548,162 562,170 548,178" fill="#e0a45c" />
+
+            <rect class="box" id="s3-a2" x="60" y="300" width="260" height="120" rx="12" />
+            <text class="box-title" x="190" y="352">基座模型</text>
+            <text class="box-sub" x="190" y="386">性价比提升</text>
+
+            <rect class="box-hot" id="s3-b2" x="560" y="300" width="260" height="120" rx="12" />
+            <text class="box-title" x="690" y="352">原生视觉</text>
+            <text class="box-sub" x="690" y="386">长上下文</text>
+
+            <line class="arrow" id="s3-ar2" x1="320" y1="360" x2="548" y2="360" />
+            <polygon id="s3-p2" points="548,352 562,360 548,368" fill="#e0a45c" />
+          </svg>
+        </div>
+
+        <div class="tagline" id="s3-tag">示例结论，正式出片时替换为当期口径</div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s3-kicker", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0.25);
+          tl.fromTo("#s3-title", { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, ease: "power3.out" }, 0.55);
+          tl.fromTo("#s3-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.6, ease: "power2.out" }, 0.95);
+          tl.fromTo("#s3-lead", { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0.95);
+          tl.fromTo(["#s3-a1", "#s3-a2"], { x: -30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 1.2);
+          tl.fromTo(["#s3-b1", "#s3-b2"], { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 1.5);
+          tl.fromTo(["#s3-ar1", "#s3-ar2"], { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.5, ease: "power2.out", transformOrigin: "left center" }, 1.7);
+          tl.fromTo(["#s3-p1", "#s3-p2"], { opacity: 0 }, { opacity: 1, duration: 0.4 }, 2.1);
+          tl.fromTo("#s3-tag", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.25);
+          window.__timelines["s3"] = tl;
+          tl.seek(0);
+        })();
+      </script>
+    </template>
+  </body>
+</html>

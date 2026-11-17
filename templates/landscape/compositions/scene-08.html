@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #0d0f12;
+          color: #f2f4f7;
+          font-family: system-ui, sans-serif;
+        }
+        .kicker {
+          position: absolute;
+          left: 96px;
+          top: 76px;
+          font-size: 28px;
+          letter-spacing: 7px;
+          color: #e0a45c;
+          font-weight: 600;
+        }
+        .text {
+          position: absolute;
+          left: 96px;
+          top: 0;
+          height: 100%;
+          width: 820px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        h1 {
+          font-size: 64px;
+          line-height: 1.16;
+          font-weight: 800;
+          letter-spacing: 1px;
+        }
+        .lead {
+          margin-top: 30px;
+          font-size: 28px;
+          line-height: 1.55;
+          color: #c2cad4;
+        }
+        .rule {
+          width: 76px;
+          height: 4px;
+          border-radius: 2px;
+          background: #e0a45c;
+          margin-top: 34px;
+        }
+        .example {
+          margin-top: 24px;
+          font-size: 26px;
+          line-height: 1.5;
+          color: #c8d0da;
+          border-left: 3px solid rgba(224,164,92,0.6);
+          padding-left: 18px;
+          width: 720px;
+        }
+        .stage {
+          position: absolute;
+          right: 100px;
+          top: 0;
+          height: 100%;
+          width: 760px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 30px;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(4, 130px);
+          grid-template-rows: repeat(4, 100px);
+          gap: 16px;
+        }
+        .cell {
+          border: 1px solid rgba(242,244,247,0.12);
+          border-radius: 10px;
+          background: rgba(242,244,247,0.03);
+        }
+        .cell.on {
+          background: rgba(224,164,92,0.22);
+          border-color: #e0a45c;
+          box-shadow: 0 0 22px rgba(224,164,92,0.28);
+        }
+        .legend {
+          display: flex;
+          gap: 40px;
+          font-size: 24px;
+          color: #c2cad4;
+        }
+        .legend .swatch {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          border-radius: 5px;
+          margin-right: 12px;
+          vertical-align: middle;
+        }
+        .swatch.dim { background: rgba(242,244,247,0.12); }
+        .swatch.on { background: #e0a45c; }
+        .tagline {
+          position: absolute;
+          left: 96px;
+          bottom: 72px;
+          font-size: 28px;
+          letter-spacing: 1px;
+          color: #c2cad4;
+        }
+      </style>
+
+      <div id="root" data-composition-id="s8" data-width="1920" data-height="1080">
+        <div class="kicker" id="s8-kicker">概念拆解 · AI 智能体</div>
+
+        <div class="text">
+          <h1 id="s8-title">什么是 AI 智能体？</h1>
+          <p class="lead" id="s8-lead">不只是聊天：理解目标、调用工具、操作界面、跑完整流程，最后把结果交回给人</p>
+          <div class="rule" id="s8-rule"></div>
+          <p class="example" id="s8-example">举例：像一位助理，先看懂需求，再自己查资料、填表单、做判断，最后请你确认</p>
+        </div>
+
+        <div class="stage" id="s8-stage">
+          <div class="grid">
+            <div class="cell" id="s8-c1"></div>
+            <div class="cell on" id="s8-c2"></div>
+            <div class="cell" id="s8-c3"></div>
+            <div class="cell" id="s8-c4"></div>
+            <div class="cell" id="s8-c5"></div>
+            <div class="cell" id="s8-c6"></div>
+            <div class="cell" id="s8-c7"></div>
+            <div class="cell on" id="s8-c8"></div>
+            <div class="cell" id="s8-c9"></div>
+            <div class="cell" id="s8-c10"></div>
+            <div class="cell on" id="s8-c11"></div>
+            <div class="cell" id="s8-c12"></div>
+            <div class="cell" id="s8-c13"></div>
+            <div class="cell" id="s8-c14"></div>
+            <div class="cell" id="s8-c15"></div>
+            <div class="cell" id="s8-c16"></div>
+          </div>
+          <div class="legend">
+            <span><span class="swatch dim"></span>理解目标</span>
+            <span><span class="swatch on"></span>执行任务</span>
+          </div>
+        </div>
+
+        <div class="tagline" id="s8-tag">从回答问题，到完成任务</div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s8-kicker", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0.25);
+          tl.fromTo("#s8-title", { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, ease: "power3.out" }, 0.55);
+          tl.fromTo("#s8-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.6, ease: "power2.out" }, 0.95);
+          tl.fromTo("#s8-lead", { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0.95);
+          tl.fromTo("#s8-example", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 1.5);
+          tl.fromTo(".cell", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", stagger: 0.05 }, 1.15);
+          tl.fromTo("#s8-c2, #s8-c8, #s8-c11", { scale: 0.8 }, { scale: 1, duration: 0.5, ease: "power2.out", stagger: 0.15 }, 2.1);
+          tl.fromTo(".legend", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 2.8);
+          tl.fromTo("#s8-tag", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.2);
+          tl.to("#s8-stage", { scale: 1.03, duration: 2.2, ease: "sine.inOut" }, 4.2);
+          tl.to("#s8-stage", { scale: 1, duration: 2.0, ease: "sine.inOut" }, 6.4);
+          window.__timelines["s8"] = tl;
+          tl.seek(0);
+        })();
+      </script>
+    </template>
+  </body>
+</html>

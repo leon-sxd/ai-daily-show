@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #13161b;
+          color: #f2f4f7;
+          font-family: system-ui, sans-serif;
+        }
+        .kicker {
+          position: absolute;
+          left: 96px;
+          top: 270px;
+          font-size: 26px;
+          letter-spacing: 6px;
+          color: #e0a45c;
+          font-weight: 600;
+        }
+        .text {
+          position: absolute;
+          left: 96px;
+          top: 350px;
+          width: 844px;
+        }
+        h1 {
+          font-size: 62px;
+          line-height: 1.22;
+          font-weight: 800;
+          letter-spacing: 1px;
+        }
+        .lead {
+          margin-top: 28px;
+          font-size: 30px;
+          line-height: 1.55;
+          color: #c2cad4;
+        }
+        .rule {
+          width: 76px;
+          height: 4px;
+          border-radius: 2px;
+          background: #e0a45c;
+          margin-top: 28px;
+        }
+        .stage {
+          position: absolute;
+          left: 96px;
+          top: 780px;
+          width: 844px;
+          height: 560px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 30px;
+        }
+        .item {
+          display: flex;
+          align-items: center;
+          gap: 30px;
+          padding: 30px 34px;
+          border: 1px solid rgba(242, 244, 247, 0.14);
+          border-left: 3px solid #e0a45c;
+          border-radius: 16px;
+          background: rgba(242, 244, 247, 0.03);
+        }
+        .item-node {
+          flex: 0 0 150px;
+          font-size: 32px;
+          font-weight: 800;
+          color: #e0a45c;
+        }
+        .item-desc { font-size: 28px; line-height: 1.5; color: #c8d0da; }
+        .tagline {
+          position: absolute;
+          left: 96px;
+          bottom: 500px;
+          font-size: 28px;
+          letter-spacing: 1px;
+          color: #c2cad4;
+        }
+      </style>
+
+      <div id="root" data-composition-id="s9" data-width="1080" data-height="1920">
+        <div class="kicker" id="s9-kicker">今日观察</div>
+
+        <div class="text">
+          <h1 id="s9-title">三条主线，看清方向</h1>
+          <p class="lead" id="s9-lead">把本期要点归到几条主线，方向更清楚</p>
+          <div class="rule" id="s9-rule"></div>
+        </div>
+
+        <div class="stage" id="s9-stage">
+          <div class="item" id="s9-i1">
+            <div class="item-node">主线一</div>
+            <div class="item-desc">要点一说明，正式出片时替换为当期口径</div>
+          </div>
+          <div class="item" id="s9-i2">
+            <div class="item-node">主线二</div>
+            <div class="item-desc">要点二说明，正式出片时替换为当期口径</div>
+          </div>
+          <div class="item" id="s9-i3">
+            <div class="item-node">主线三</div>
+            <div class="item-desc">要点三说明，正式出片时替换为当期口径</div>
+          </div>
+        </div>
+
+        <div class="tagline" id="s9-tag">示例结论，正式出片时替换为当期口径</div>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+      <script>
+        (function () {
+          var tl = gsap.timeline({ paused: true });
+          tl.fromTo("#s9-kicker", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0.25);
+          tl.fromTo("#s9-title", { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, ease: "power3.out" }, 0.55);
+          tl.fromTo("#s9-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.6, ease: "power2.out" }, 0.95);
+          tl.fromTo("#s9-lead", { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0.95);
+          tl.fromTo(["#s9-i1", "#s9-i2", "#s9-i3"], { x: -34, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out", stagger: 0.2 }, 1.2);
+          tl.fromTo("#s9-tag", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 1.25);
+          window.__timelines["s9"] = tl;
+          tl.seek(0);
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+# --- 运行时与依赖（由环境自检安装，不入库）---
+node_modules/
+.tools/
+.hyperframes/
+.thumbnails/
+.cache/
+dist/
+
+# --- 成片与中间产物 ---
+renders/
+*.mp4
+*.silent.mp4
+*.wav
+*.mp3
+*.aac
+
+# --- 私有素材：本地保留，不随仓库公开 ---
+assets/bgm.wav
+assets/covers/
+templates/covers/*.png
+
+# --- 真实归档：当期热点文案、来源清单、成品封面不入库 ---
+ai_daily/
+ai_weekly/
+
+# --- 调试截图与临时图（占位版式用 SVG 除外）---
+*.png
+!templates/covers/*.svg
+!examples/**/*.svg
+
+# --- 系统 / 编辑器 ---
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
